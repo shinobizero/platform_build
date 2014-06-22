@@ -594,6 +594,7 @@ function brunch()
 function breakfast()
 {
     target=$1
+    local variant=$2
     CM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     for f in `/bin/ls vendor/cm/vendorsetup.sh 2> /dev/null`
@@ -612,8 +613,11 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
-            # This is probably just the nexus model name
-            lunch $target-user
+            # This is probably just the model name
+            if [ -z "$variant" ]; then
+                variant="user"
+            fi
+            lunch $target-$variant
         fi
     fi
     return $?
