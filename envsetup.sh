@@ -1562,7 +1562,7 @@ function mka() {
             make -j `sysctl hw.ncpu|cut -d" " -f2` "$@"
             ;;
         *)
-            schedtool -B -n 1 -e ionice -n 1 make -j$(cat /proc/cpuinfo | grep "^processor" | wc -l) "$@"
+            mk_timer schedtool -B -n 1 -e ionice -n 1 make -j$(cat /proc/cpuinfo | grep "^processor" | wc -l) "$@"
             ;;
     esac
 }
@@ -1672,6 +1672,11 @@ function mk_timer()
     echo " ####${color_reset}"
     echo
     return $ret
+}
+
+function make()
+{
+    mk_timer $(get_make_command) "$@"
 }
 
 function provision()
