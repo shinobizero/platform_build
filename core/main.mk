@@ -518,6 +518,9 @@ endif
 ifeq ($(MAKECMDGOALS),dirty)
 dont_bother := true
 endif
+ifeq ($(MAKECMDGOALS),dirtier)
+dont_bother := true
+endif
 ifeq ($(MAKECMDGOALS),appclean)
 dont_bother := true
 endif
@@ -1188,6 +1191,13 @@ dirty:
 	@rm -rf $(OUT_DIR)/target/product/*/*.md5sum
 	@rm -rf $(OUT_DIR)/target/product/*/*.txt
 	@echo -e ${CL_GRN}"build.prop, changelog and zip files erased"${CL_RST}	
+
+# Clears out changelog and build.prop (no zips are harmed)
+.PHONY: dirtier
+dirtier:
+	@rm -rf $(OUT_DIR)/target/product/*/system/build.prop
+	@rm -rf $(OUT_DIR)/target/product/*/*.txt
+	@echo -e ${CL_GRN}"build.prop & changelog erased"${CL_RST}
 
 # Clears out all apks
 .PHONY: appclean
