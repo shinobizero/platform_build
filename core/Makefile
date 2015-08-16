@@ -1980,6 +1980,13 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE)
 .PHONY: otapackage
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 
+	$(hide) $(MD5SUM) $(INTERNAL_OTA_PACKAGE_TARGET) > $(INTERNAL_OTA_PACKAGE_TARGET).md5sum
+	@echo -e ${CL_CYN}"=============== $$(echo $(TARGET_PRODUCT) | sed 's/\([a-z]\)\([a-zA-Z0-9]*\)/\u\1\2/g' | cut -d'_' -f1) OTA package: COMPLETE ==============="${CL_RST}
+	@echo -e ${CL_CYN}"ZIP: "${CL_CYN} $$(basename $(INTERNAL_OTA_PACKAGE_TARGET))${CL_RST}
+	@echo -e ${CL_CYN}"MD5: "${CL_CYN}" `cat $(INTERNAL_OTA_PACKAGE_TARGET).md5sum | cut -d ' ' -f 1`"${CL_RST}
+	@echo -e ${CL_CYN}"Size:"${CL_CYN}" `ls -lah $(INTERNAL_OTA_PACKAGE_TARGET) | cut -d ' ' -f 5`"${CL_RST}
+	@echo -e ${CL_CYN}"============================================================"${CL_RST}
+
 endif    # build_ota_package
 
 # -----------------------------------------------------------------
