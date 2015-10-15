@@ -1670,6 +1670,12 @@ do
 done
 unset f
 
+# Include extra functions files located under vendor functions folder
+for f in $(gettop)/vendor/krexus/utils/functions/*; do
+   . $f 2> /dev/null
+done
+unset f
+
 addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
