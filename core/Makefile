@@ -1115,7 +1115,8 @@ $(INSTALLED_FILES_FILE): $(FULL_SYSTEMIMAGE_DEPS)
 # Generate changelog
 	@echo -e ${CL_GRN}"Generating Changelog"${CL_RST}
 	$(hide) ./vendor/krexus/utils/changelog.sh
-	$(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(TARGET_PRODUCT)-Changelog.txt
+	$(hide) cp $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(TARGET_PRODUCT)-Changelog.txt
+	$(hide) mv $(PRODUCT_OUT)/Changelog.txt ~/Dropbox/Public/krexus_Changelog.txt
 
 	@echo Installed file list: $@
 	@mkdir -p $(dir $@)
