@@ -663,10 +663,10 @@ else
 endif
 
 # Rules for QCOM targets
-include vendor/zero/build/core/qcom_target.mk
+include build/core/qcom_target.mk
 
 # Rules for MTK targets
-include vendor/zero/build/core/mtk_target.mk
+include build/core/mtk_target.mk
 
 # ###############################################################
 # Set up final options.

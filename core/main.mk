@@ -266,6 +266,11 @@ endif
 # Bring in standard build system definitions.
 include $(BUILD_SYSTEM)/definitions.mk
 
+# Bring in Qualcomm helper macros
+include build/core/qcom_utils.mk
+# Bring in MTK helper macros
+include build/core/mtk_utils.mk
+
 # Bring in dex_preopt.mk
 include $(BUILD_SYSTEM)/dex_preopt.mk
 
