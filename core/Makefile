@@ -1962,10 +1962,6 @@ ifeq ($(build_ota_package),true)
 # -----------------------------------------------------------------
 # OTA update package
 
-name := $(TARGET_PRODUCT)
-ifeq ($(TARGET_BUILD_TYPE),debug)
-  name := $(name)_debug
-endif
 name := krexus_$(PLATFORM_VERSION)-$(shell date +"%y%m%d")-$(TARGET_DEVICE)
 #Automatic build number revisioning: the command searches for the number of zips with the same name and increments the r$(build_no) of the name accordingly
 build_no := $(shell echo $$(( $(shell find $(PRODUCT_OUT) -maxdepth 1 -type f -name "$(name)*.zip" | wc -l) + 1 )))
@@ -1975,6 +1971,9 @@ endif
 #Special naming, export the variable: BUILD_TAG
 ifneq ($(BUILD_TAG),)
   name := $(BUILD_TAG)-$(name)
+#else, if the build is USERDEBUG, depict that
+else ifeq ($(TARGET_BUILD_TYPE),debug)
+  name := DEBUG-$(name)
 endif
 
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
