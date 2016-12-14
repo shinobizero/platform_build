@@ -1974,7 +1974,7 @@ ifneq ($(build_no),1)
 endif
 #Special naming, export the variable: BUILD_TAG
 ifneq ($(BUILD_TAG),)
-  name := $(name)-$(BUILD_TAG)
+  name := $(BUILD_TAG)-$(name)
 endif
 
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
