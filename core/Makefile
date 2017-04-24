@@ -231,6 +231,7 @@ endif
 	$(hide) TARGET_BUILD_TYPE="$(TARGET_BUILD_VARIANT)" \
 			TARGET_BUILD_FLAVOR="$(TARGET_BUILD_FLAVOR)" \
 			TARGET_DEVICE="$(TARGET_DEVICE)" \
+			EUCOS_DEVICE="$(TARGET_DEVICE)" \
 			PRODUCT_NAME="$(TARGET_PRODUCT)" \
 			PRODUCT_BRAND="$(PRODUCT_BRAND)" \
 			PRODUCT_DEFAULT_LOCALE="$(call get-default-product-locale,$(PRODUCT_LOCALES))" \
@@ -1996,9 +1997,9 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE)
 	   $(if $(OEM_OTA_CONFIG), -o $(OEM_OTA_CONFIG)) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
-CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/purenexus_$(TARGET_PRODUCT)-$(PURE_VERSION).zip
+CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/eucos-$(EUCOS_VERSION).zip
 
-ZIP_LOCATION := /out/target/product/$(TARGET_PRODUCT)/purenexus_$(TARGET_PRODUCT)-$(PURE_VERSION).zip
+ZIP_LOCATION := /out/target/product/$(TARGET_PRODUCT)/eucos-$(EUCOS_VERSION).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
@@ -2008,15 +2009,17 @@ bacon: otapackage
 	@echo -e ${CL_CYN}
 	@echo -e ""
 	@echo -e "                The"
+	@echo -e "                           Future"
+        @echo -e ""
+	@echo -e " ███████╗██╗   ██╗ ██████╗██╗     ██╗██████╗ ███████╗ █████╗ ███╗   ██╗     ██████╗ ███████╗ "
+	@echo -e " ██╔════╝██║   ██║██╔════╝██║     ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║    ██╔═══██╗██╔════╝ "
+	@echo -e " █████╗  ██║   ██║██║     ██║     ██║██║  ██║█████╗  ███████║██╔██╗ ██║    ██║   ██║███████╗ "
+	@echo -e " ██╔══╝  ██║   ██║██║     ██║     ██║██║  ██║██╔══╝  ██╔══██║██║╚██╗██║    ██║   ██║╚════██║ "
+	@echo -e " ███████╗╚██████╔╝╚██████╗███████╗██║██████╔╝███████╗██║  ██║██║ ╚████║    ╚██████╔╝███████║ "
+	@echo -e " ╚══════╝ ╚═════╝  ╚═════╝╚══════╝╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚══════╝ "
 	@echo -e ""
-	@echo -e " ██████╗ ██╗   ██╗██████╗ ███████╗  ███╗   ██╗███████╗██╗  ██╗██╗   ██╗███████╗ "
-	@echo -e " ██╔══██╗██║   ██║██╔══██╗██╔════╝  ████╗  ██║██╔════╝╚██╗██╔╝██║   ██║██╔════╝ "
-	@echo -e " ██████╔╝██║   ██║██████╔╝█████╗    ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗ "
-	@echo -e " ██╔═══╝ ██║   ██║██╔══██╗██╔══╝    ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║ "
-	@echo -e " ██║     ╚██████╔╝██║  ██║███████╗  ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║ "
-	@echo -e " ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝  ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝ "
-	@echo -e ""
-	@echo -e "                                                      Project"
+        @echo -e "                                       Is"
+	@echo -e "                                                      Here"
 	@echo -e ""
 	@echo -e "ZIP: $(ZIP_LOCATION)"
 	@echo -e "SIZE: "`ls -hal $(CUSTOM_TARGET_PACKAGE) | cut -d ' ' -f 5`
