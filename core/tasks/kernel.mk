@@ -61,6 +61,25 @@ endif
 
 TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(TARGET_PREBUILT_INT_KERNEL_TYPE)
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    FULL_KERNEL_BUILD := true
+else
+    ifneq "$(wildcard $(TARGET_KERNEL_SOURCE) )" ""
+        ifneq ($(TARGET_KERNEL_CONFIG),)
+            $(warning ******************************************************************)
+            $(warning * A prebuilt Kernel was found, but the board configuration       *)
+            $(warning * defines TARGET_KERNEL_SOURCE and TARGET_KERNEL_CONFIG.         *)
+            $(warning * Allowing full Kernel image and headers to build from source,   *)
+            $(warning * even though you MAY WANT to define some rules to properly      *)
+            $(warning * pack the boot image using the prebuilt Kernel.                 *)
+            $(warning ******************************************************************)
+            FULL_KERNEL_BUILD := true
+        endif
+    endif
+endif
+
+ifeq ($(FULL_KERNEL_BUILD),true)
+
 # Clear this first to prevent accidental poisoning from env
 MAKE_FLAGS :=
 
