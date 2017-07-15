@@ -14,6 +14,9 @@
 
 # Android makefile to build kernel as a part of Android Build
 
+# Exclude Sony devices using their own kernel building script
+ifneq ($(BUILD_KERNEL),true)
+
 TARGET_AUTO_KDIR := $(shell echo $(TARGET_DEVICE_DIR) | sed -e 's/^device/kernel/g')
 
 ## Externally influenced variables
@@ -290,3 +293,4 @@ $(file) : $(KERNEL_BIN) | $(ACP)
 
 ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
 endif
+endif # BUILD_KERNEL
