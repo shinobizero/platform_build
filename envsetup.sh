@@ -132,7 +132,7 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^aosp_") ; then
+    if (echo -n $1 | grep -q -e "^krexus_") ; then
        CUSTOM_BUILD=
     else
        CUSTOM_BUILD=$1
