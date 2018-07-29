@@ -133,9 +133,9 @@ function check_product()
     fi
 
     if (echo -n $1 | grep -q -e "^krexus_") ; then
-       CUSTOM_BUILD=
+       CUSTOM_BUILD=$(echo -n $1 | sed -e 's/^zero_//g')
     else
-       CUSTOM_BUILD=$1
+       CUSTOM_BUILD=
     fi
     export CUSTOM_BUILD
 
