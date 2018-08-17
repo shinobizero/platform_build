@@ -799,13 +799,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
                    ""+input_zip.read("SYSTEM/addon.d/Magisk.zip"))
     script.Magisk()
 
-  # Code For Symlinking Busybox Applets
-  if block_based:
-      script.Print("Symlinking Busybox Applets...")
-      script.Mount("/system")
-      script.SymlinkBusybox()
-      script.Unmount("/system")
-
   script.ShowProgress(0.2, 10)
   device_specific.FullOTA_InstallEnd()
 
