@@ -615,9 +615,15 @@ function breakfast()
         else
             # This is probably just the model name
             if [ -z "$variant" ]; then
-                variant="user"
+                variant="userdebug"
             fi
-            lunch $target-$variant
+
+            if ! check_product zero_$target && check_product lineage_$target; then
+                echo "** Warning: '$target' is using LineageOS-based makefiles. This will be deprecated in the next major release."
+                lunch lineage_$target-$variant
+            else
+                lunch zero_$target-$variant
+            fi
         fi
     fi
     return $?
