@@ -132,10 +132,10 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^aosp_") ; then
-       CUSTOM_BUILD=
+    if (echo -n $1 | grep -q -e "^zero_") ; then
+       CUSTOM_BUILD=$(echo -n $1 | sed -e 's/^zero_//g')
     else
-       CUSTOM_BUILD=$1
+       CUSTOM_BUILD=
     fi
     export CUSTOM_BUILD
 
@@ -582,7 +582,7 @@ function breakfast()
     local variant=$2
     CUSTOM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
-    for f in `/bin/ls vendor/custom/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/zero/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
