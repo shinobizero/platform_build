@@ -26,17 +26,9 @@ PRODUCT_PACKAGES := \
 	Fallback \
 	Gallery \
 	GestureBuilder \
-	Launcher3 \
-	LegacyCamera \
 	librs_jni \
-	libwnndict \
-	libWnnEngDic \
-	libWnnJpnDic \
 	LiveWallpapersPicker \
 	Mms \
-	Music \
-	OpenWnn \
-	Protips \
 	rild \
 	SdkSetup \
 	SmokeTest \
