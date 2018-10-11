@@ -534,18 +534,11 @@ function print_lunch_menu()
 {
 
     echo -e "\033[01;36m"
-    echo -e "                The"
-    echo -e "                           Future"
     echo -e ""
-    echo -e " ███████╗██╗   ██╗ ██████╗██╗     ██╗██████╗ ███████╗ █████╗ ███╗   ██╗     ██████╗ ███████╗ "
-    echo -e " ██╔════╝██║   ██║██╔════╝██║     ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║    ██╔═══██╗██╔════╝ "
-    echo -e " █████╗  ██║   ██║██║     ██║     ██║██║  ██║█████╗  ███████║██╔██╗ ██║    ██║   ██║███████╗ "
-    echo -e " ██╔══╝  ██║   ██║██║     ██║     ██║██║  ██║██╔══╝  ██╔══██║██║╚██╗██║    ██║   ██║╚════██║ "
-    echo -e " ███████╗╚██████╔╝╚██████╗███████╗██║██████╔╝███████╗██║  ██║██║ ╚████║    ╚██████╔╝███████║ "
-    echo -e " ╚══════╝ ╚═════╝  ╚═════╝╚══════╝╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚══════╝ "
     echo -e ""
-    echo -e "                                       Is"
-    echo -e "                                                      Here"
+    echo -e " ZeroROM "
+    echo -e ""
+    echo -e ""
     echo -e "\033[0m"
 
     if [ "z${CUSTOM_DEVICES_ONLY}" != "z" ]; then
@@ -585,7 +578,7 @@ function breakfast()
     local variant=$2
     CUSTOM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
-    for f in `/bin/ls vendor/eucos/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/zero/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
