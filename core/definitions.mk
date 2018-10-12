@@ -2900,6 +2900,12 @@ $(strip $(if $(filter $(TARGET_ARCH),$(1)),$(TARGET_ARCH),\
   $(if $(filter $(TARGET_2ND_ARCH),$(1)),$(TARGET_2ND_ARCH),$(if $(1),none))))
 endef
 
+# CM-specific macros
+#
+define uniq
+$(if $1,$(firstword $1) $(call uniq,$(filter-out $(firstword $1),$1)))
+endef
+
 ###########################################################
 ## Other includes
 ###########################################################
