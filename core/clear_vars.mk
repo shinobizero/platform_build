@@ -372,6 +372,10 @@ LOCAL_RRO_THEME:=
 
 LOCAL_PROTOC_OUTPUT:=
 
+#CM-specific variable clears
+#
+LOCAL_IGNORE_SUBDIR :=
+
 # Include any vendor specific clear_vars.mk file
 -include $(TOPDIR)vendor/*/build/core/clear_vars.mk
 
