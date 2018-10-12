@@ -131,10 +131,10 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^aosp_") ; then
-       CUSTOM_BUILD=
+    if (echo -n $1 | grep -q -e "^zero_") ; then
+       CUSTOM_BUILD=$(echo -n $1 | sed -e 's/^zero_//g')
     else
-       CUSTOM_BUILD=$1
+       CUSTOM_BUILD=
     fi
     export CUSTOM_BUILD
 
@@ -557,6 +557,11 @@ function print_lunch_menu()
         i=$(($i+1))
     done
 
+    if [ "z${CUSTOM_DEVICES_ONLY}" != "z" ]; then
+       echo " "
+       echo "... time to mka bacon!!"
+    fi
+
     echo
 }
 
@@ -596,9 +601,9 @@ function breakfast()
         else
             # This is probably just the model name
             if [ -z "$variant" ]; then
-                variant="user"
+                variant="userdebug"
             fi
-            lunch $target-$variant
+            lunch zero_$target-$variant
         fi
     fi
     return $?
