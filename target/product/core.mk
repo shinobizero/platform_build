@@ -28,7 +28,6 @@ PRODUCT_PACKAGES += \
     CaptivePortalLogin \
     CertInstaller \
     Contacts \
-    DocumentsUI \
     DownloadProviderUi \
     ExactCalculator \
     Exchange2 \
